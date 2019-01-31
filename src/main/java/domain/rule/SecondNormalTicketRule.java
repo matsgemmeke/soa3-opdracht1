@@ -11,7 +11,7 @@ public class SecondNormalTicketRule implements OrderPricingRule {
             for (MovieTicket ticket : order.getTickets()) {
                 MovieScreening movieScreening = ticket.getMovieScreening();
 
-                if (movieScreening.getDateAndTime().getDayOfWeek().getValue() <= 3) {
+                if (movieScreening.getDateAndTime().getDayOfWeek().getValue() <= 4) {
                     movieScreening.setPricePerSeat(0.0);
                 }
             }

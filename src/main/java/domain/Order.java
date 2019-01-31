@@ -1,8 +1,6 @@
 package domain;
 
 import domain.rule.OrderPricingRule;
-import domain.rule.SecondNormalTicketRule;
-import domain.rule.SecondStudentTicketRule;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,9 +19,6 @@ public class Order {
 
         this.tickets = new ArrayList<>();
         this.rules = new ArrayList<>();
-
-        rules.add(new SecondNormalTicketRule());
-        rules.add(new SecondStudentTicketRule());
     }
 
     public int getOrderNr() {
@@ -36,6 +31,10 @@ public class Order {
 
     public boolean isStudentOrder() {
         return isStudentOrder;
+    }
+
+    public void addPricingRule(OrderPricingRule rule) {
+        rules.add(rule);
     }
 
     public void addSeatReservation(MovieTicket ticket) {
