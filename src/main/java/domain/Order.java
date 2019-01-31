@@ -1,31 +1,63 @@
 package domain;
 
+import domain.rule.OrderPricingRule;
+import domain.rule.SecondNormalTicketRule;
+import domain.rule.SecondStudentTicketRule;
+
 import java.util.ArrayList;
+import java.util.List;
 
 public class Order {
 
     private int orderNr;
     private boolean isStudentOrder;
 
-    private ArrayList<MovieTicket> tickets;
+    private List<MovieTicket> tickets;
+    private List<OrderPricingRule> rules;
 
     public Order(int orderNr, boolean isStudentOrder) {
         this.orderNr = orderNr;
         this.isStudentOrder = isStudentOrder;
 
-        tickets = new ArrayList<>();
+        this.tickets = new ArrayList<>();
+        this.rules = new ArrayList<>();
+
+        rules.add(new SecondNormalTicketRule());
+        rules.add(new SecondStudentTicketRule());
     }
 
     public int getOrderNr() {
         return orderNr;
     }
 
+    public List<MovieTicket> getTickets() {
+        return tickets;
+    }
+
+    public boolean isStudentOrder() {
+        return isStudentOrder;
+    }
+
     public void addSeatReservation(MovieTicket ticket) {
         tickets.add(ticket);
     }
 
+    private void applyRules(Order order) {
+        for (OrderPricingRule rule : rules) {
+            rule.applyRule(order);
+        }
+    }
+
     public double calculatePrice() {
-        return 0;
+        applyRules(this);
+
+        double price = 0.0;
+
+        for (MovieTicket ticket : tickets) {
+            price += ticket.getMovieScreening().getPricePerSeat();
+        }
+
+        return price;
     }
 
     public void export(TicketExportFormat exportFormat) {

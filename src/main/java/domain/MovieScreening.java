@@ -18,8 +18,16 @@ public class MovieScreening {
         this.pricePerSeat = pricePerSeat;
     }
 
+    public LocalDateTime getDateAndTime() {
+        return dateAndTime;
+    }
+
     public double getPricePerSeat() {
         return pricePerSeat;
+    }
+
+    public void setPricePerSeat(double pricePerSeat) {
+        this.pricePerSeat = pricePerSeat;
     }
 
     @Override

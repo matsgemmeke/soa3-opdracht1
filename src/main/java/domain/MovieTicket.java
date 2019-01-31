@@ -20,12 +20,12 @@ public class MovieTicket {
         this.seatNr = seatNr;
     }
 
-    public boolean isPremiumTicket() {
-        return isPremiumTicket;
+    public MovieScreening getMovieScreening() {
+        return movieScreening;
     }
 
-    public double getPrice() {
-        return movieScreening.getPricePerSeat();
+    public boolean isPremiumTicket() {
+        return isPremiumTicket;
     }
 
     @Override
