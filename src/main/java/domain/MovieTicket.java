@@ -24,6 +24,14 @@ public class MovieTicket {
         return movieScreening;
     }
 
+    public int getSeatNr() {
+        return seatNr;
+    }
+
+    public int getSeatRow() {
+        return seatRow;
+    }
+
     public boolean isPremiumTicket() {
         return isPremiumTicket;
     }

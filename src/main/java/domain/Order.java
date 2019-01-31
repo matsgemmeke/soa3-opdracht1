@@ -2,6 +2,7 @@ package domain;
 
 import domain.rule.OrderPricingRule;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -43,7 +44,7 @@ public class Order {
 
     private void applyRules(Order order) {
         for (OrderPricingRule rule : rules) {
-            rule.applyRule(order);
+            order = rule.applyRule(order);
         }
     }
 
@@ -59,9 +60,19 @@ public class Order {
         return price;
     }
 
-    public void export(TicketExportFormat exportFormat) {
+    public void export(TicketExportFormat exportFormat, String path) {
         // Bases on the string respresentations of the tickets (toString), write
         // the ticket to a file with naming convention Order_<orderNr>.txt of
         // Order_<orderNr>.json
+        try {
+            exportFormat.export(this, path);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public String toString() {
+        return "orderNr: " + this.orderNr + System.lineSeparator() + "totalprice:" + this.calculatePrice() + System.lineSeparator() + "studentorder:" + this.isStudentOrder();
     }
 }
