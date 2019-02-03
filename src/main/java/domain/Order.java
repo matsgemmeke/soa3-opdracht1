@@ -54,7 +54,7 @@ public class Order {
         double price = 0.0;
 
         for (MovieTicket ticket : tickets) {
-            price += ticket.getMovieScreening().getPricePerSeat();
+            price += ticket.getPrice();
         }
 
         return price;

@@ -21,6 +21,15 @@ public class PremiumTicketRuleTest {
     }
 
     @Test
+    public void testEmptyTicketList() {
+        Order order = new Order(1, false);
+
+        order.addPricingRule(new PremiumTicketRule());
+
+        assertEquals(0.0, order.calculatePrice(), 0.01);
+    }
+
+    @Test
     public void testNoPremiumTickets() {
         Order order = new Order(1, false);
 

@@ -32,6 +32,15 @@ public class SecondNormalTicketRuleTest {
     }
 
     @Test
+    public void testEmptyTicketList() {
+        Order order = new Order(1, false);
+
+        order.addPricingRule(new SecondNormalTicketRule());
+
+        assertEquals(0.0, order.calculatePrice(), 0.01);
+    }
+
+    @Test
     public void testDiscountOnWeekdays() {
         MovieScreening movieScreening = new MovieScreening(movie, LocalDateTime.of(2019, 1, 31, 0, 0), 10.0);
         Order order = new Order(1, false);

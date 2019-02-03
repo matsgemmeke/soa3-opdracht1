@@ -26,10 +26,6 @@ public class MovieScreening {
         return pricePerSeat;
     }
 
-    public void setPricePerSeat(double pricePerSeat) {
-        this.pricePerSeat = pricePerSeat;
-    }
-
     @Override
     public String toString() {
         return movie.getTitle() + " - " + dateAndTime;

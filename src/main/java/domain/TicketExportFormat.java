@@ -40,6 +40,7 @@ public enum TicketExportFormat {
 
             FileWriter file = new FileWriter(path);
             file.write(object.toJSONString());
+            file.close();
         }
     };
 

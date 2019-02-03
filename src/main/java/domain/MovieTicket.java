@@ -4,6 +4,7 @@ public class MovieTicket {
 
     private MovieScreening movieScreening;
     private boolean isPremiumTicket;
+    private double price;
 
     private int seatRow;
     private int seatNr;
@@ -16,12 +17,21 @@ public class MovieTicket {
     ) {
         this.movieScreening = movieScreening;
         this.isPremiumTicket = isPremiumTicket;
+        this.price = movieScreening.getPricePerSeat();
         this.seatRow = seatRow;
         this.seatNr = seatNr;
     }
 
     public MovieScreening getMovieScreening() {
         return movieScreening;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
     }
 
     public int getSeatNr() {

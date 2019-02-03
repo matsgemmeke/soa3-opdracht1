@@ -6,7 +6,7 @@ public class SecondStudentTicketRule implements OrderPricingRule {
 
     public Order applyRule(Order order) {
         if (order.isStudentOrder() && order.getTickets().size() > 1) {
-            order.getTickets().get(1).getMovieScreening().setPricePerSeat(0.0);
+            order.getTickets().get(1).setPrice(0.0);
         }
         return order;
     }
